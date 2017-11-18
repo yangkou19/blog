@@ -20,19 +20,19 @@ class PostListView(ListView):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
 class PostDetailView(DetailView):
-    mode = Post
+    model = Post
 
 class CreatePostView(LoginRequiredMixin,CreateView):
     login_url = '/login/'
     redirect_field_name = 'blog/post_detail.html'
     form_class = PostForm
-    mode = Post
+    model = Post
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
     login_url = '/login/'
     redirect_field_name = 'blog/post_detail.html'
     form_class = PostForm
-    mode = Post
+    model = Post
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
